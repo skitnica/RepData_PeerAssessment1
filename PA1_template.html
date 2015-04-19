@@ -86,6 +86,7 @@ plot(y$interval, y$avg,type=&quot;l&quot;, ylab=&quot;Average steps per day&quot
 <h2>Imputing missing values</h2>
 <pre class="r"><code>missingCount &lt;- length(which(is.na(data$steps)))</code></pre>
 <p>There are 2304 rows with missing values</p>
+<p>Strategy for inputting missing values: - The strategy chosen for inputting missing values is to use the average value for a interval over the nr of days, and if for any day the interval has no value, use the average interval value.</p>
 <pre class="r"><code>y &lt;- summarise(grp2, avg = mean(steps, na.rm=TRUE))
 dataWithFixedSteps &lt;- mutate(data, fix.steps = ifelse(!is.na(steps), steps, y$avg)) 
 grp3 &lt;- group_by(dataWithFixedSteps, date)

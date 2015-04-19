@@ -57,6 +57,10 @@ missingCount <- length(which(is.na(data$steps)))
 
 There are 2304 rows with missing values
 
+Strategy for inputting missing values:
+ -  The strategy chosen for inputting missing values is to use the average value for a interval over the nr of days, and if for any day the interval has no value, use the average interval value.
+
+
 
 ```r
 y <- summarise(grp2, avg = mean(steps, na.rm=TRUE))
