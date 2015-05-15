@@ -18,7 +18,7 @@ library(dplyr)
 library(ggplot2)
 grp <- group_by(data, date)
 x <- summarise(grp, total = sum(steps) )
-ggplot(x,aes(x = date, y = total)) + geom_histogram(stat="identity")
+hist(x$total,main = "Histogram of total nr of steps per day", xlab = "Total")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
@@ -67,7 +67,7 @@ y <- summarise(grp2, avg = mean(steps, na.rm=TRUE))
 dataWithFixedSteps <- mutate(data, fix.steps = ifelse(!is.na(steps), steps, y$avg)) 
 grp3 <- group_by(dataWithFixedSteps, date)
 fx <- summarise(grp3, total = sum(fix.steps) )
-ggplot(fx,aes(x = date, y = total)) + geom_histogram(stat="identity")
+hist(fx$total,main = "Histogram of Fixed total nr of steps per day", xlab = "Total")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
